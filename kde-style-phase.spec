@@ -10,13 +10,13 @@ License:	X11
 Group:		Themes
 Source0:	http://www.kde-look.org/content/files/11402-%{_name}-%{version}.tar.gz
 # Source0-md5:	ae1ed12fe7d80e50edaa251994149511
+Patch0:		%{_name}-admin.patch.bz2
+Patch1:		%{_name}-unsermake.patch
 URL:		http://www.kde-look.org/content/show.php?content=11402
 BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	freetype-devel
-BuildRequires:	kdelibs-devel
 BuildRequires:	unsermake
-Requires:	kdelibs
+BuildRequires:	automake
+BuildRequires:	kdelibs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -25,25 +25,28 @@ not drab, and aesthetic but not distracting.
 
 %description -l pl
 phase to styl dla KDE, zaprojektowany tak aby ³±czyæ funkcjonalno¶æ z
-estetyk±, jednocze¶nie nie rozpraszaj±c u¿ytkownika.
+estetyk±, nie rozpraszaj±c jednocze¶nie u¿ytkownika.
 
 %prep
 %setup -q -n %{_name}-%{version}
-
+%patch0 -p0
+%patch1 -p1
 %build
-kde_htmldir="%{_kdedocdir}"; export kde_htmldir
-kde_icondir="%{_iconsdir}"; export kde_icondir
-cp -f /usr/share/automake/config.sub admin
+cp -f %{_datadir}/automake/config.sub admin
+export UNSERMAKE=%{_datadir}/unsermake/unsermake
+%{__make} cvs  -f admin/Makefile.common
 
-%configure
-
+%configure \
+	--with-qt-libraries=%{_libdir}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_htmldir="%{_kdedocdir}"
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
