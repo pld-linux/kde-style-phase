@@ -1,0 +1,8 @@
+--- phase-0.2/Makefile.am~	2004-03-16 07:40:30.000000000 +0100
++++ phase-0.2/Makefile.am	2004-05-27 11:56:48.382802464 +0200
+@@ -1,4 +1,4 @@
+-SUBDIRS = $(TOPSUBDIRS)
++SUBDIRS = phasestyle
+ 
+ MAINTAINERCLEANFILES = subdirs configure.in acinclude.m4 configure.files
+ 
