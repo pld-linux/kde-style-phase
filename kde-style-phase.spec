@@ -6,7 +6,7 @@ Summary(pl):	Styl do KDE - %{_name}
 Name:		kde-style-%{_name}
 Version:	0.2
 Release:	1
-License:	GPL
+License:	X11
 Group:		Themes
 Source0:	http://www.kde-look.org/content/files/11402-%{_name}-%{version}.tar.gz
 # Source0-md5:	ae1ed12fe7d80e50edaa251994149511
