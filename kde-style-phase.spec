@@ -20,12 +20,12 @@ Requires:	kdelibs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-%{_name} is a widget style for KDE. It is designed to be functional 
-but not drab, and aesthetic but not distracting.
+phase is a widget style for KDE. It is designed to be functional but
+not drab, and aesthetic but not distracting.
 
 %description -l pl
-%{_name} to styl dla KDE, zaprojektowany tak aby ³±czyæ funkcjonalno¶æ
-z estetyk±, jednocze¶nie nie rozpraszaj±c u¿ytkownika.
+phase to styl dla KDE, zaprojektowany tak aby ³±czyæ funkcjonalno¶æ z
+estetyk±, jednocze¶nie nie rozpraszaj±c u¿ytkownika.
 
 %prep
 %setup -q -n %{_name}-%{version}
@@ -33,9 +33,7 @@ z estetyk±, jednocze¶nie nie rozpraszaj±c u¿ytkownika.
 %build
 kde_htmldir="%{_kdedocdir}"; export kde_htmldir
 kde_icondir="%{_iconsdir}"; export kde_icondir
-cp /usr/share/automake/config.sub admin
-##export UNSERMAKE=/usr/share/unsermake/unsermake
-##%{__make} -f Makefile.cvs
+cp -f /usr/share/automake/config.sub admin
 
 %configure
 
@@ -43,8 +41,6 @@ cp /usr/share/automake/config.sub admin
 
 %install
 rm -rf $RPM_BUILD_ROOT
-# create dirs if necessary
-#install -d $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
