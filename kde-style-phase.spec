@@ -15,9 +15,10 @@ Source1:	http://ep09.pld-linux.org/~djurban/kde/kde-common-admin.tar.bz2
 Patch0:		%{_name}-unsermake.patch
 URL:		http://www.kde-look.org/content/show.php?content=11402
 BuildRequires:	autoconf
-BuildRequires:	unsermake
 BuildRequires:	automake
 BuildRequires:	kdelibs-devel
+BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	unsermake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -33,8 +34,8 @@ estetyk±, nie rozpraszaj±c jednocze¶nie u¿ytkownika.
 %patch0 -p1
 
 %build
-cp -f %{_datadir}/automake/config.sub admin
-export UNSERMAKE=%{_datadir}/unsermake/unsermake
+cp -f /usr/share/automake/config.sub admin
+export UNSERMAKE=/usr/share/unsermake/unsermake
 %{__make} cvs  -f admin/Makefile.common
 
 %configure \
