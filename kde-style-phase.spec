@@ -2,7 +2,7 @@
 %define         _name phase
 
 Summary:	KDE style - %{_name}
-Summary(pl):	Styl do KDE - %{_name}
+Summary(pl.UTF-8):   Styl do KDE - %{_name}
 Name:		kde-style-%{_name}
 Version:	0.4
 Release:	1
@@ -25,9 +25,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 phase is a widget style for KDE. It is designed to be functional but
 not drab, and aesthetic but not distracting.
 
-%description -l pl
-phase to styl dla KDE, zaprojektowany tak aby ³±czyæ funkcjonalno¶æ z
-estetyk±, nie rozpraszaj±c jednocze¶nie u¿ytkownika.
+%description -l pl.UTF-8
+phase to styl dla KDE, zaprojektowany tak aby Å‚Ä…czyÄ‡ funkcjonalnoÅ›Ä‡ z
+estetykÄ…, nie rozpraszajÄ…c jednoczeÅ›nie uÅ¼ytkownika.
 
 %prep
 %setup -q -n %{_name}-%{version} -a1
